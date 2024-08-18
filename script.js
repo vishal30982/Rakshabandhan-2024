@@ -5,6 +5,8 @@ canvas.height = window.innerHeight;
 
 let reaveling = false;
 let canvasFull = false;
+let song = new Audio('./song.mp3');
+song.volume = 1;
 
 function isCanvasFull() {
   const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -63,16 +65,14 @@ function rakhiAnime() {
 // for pointer devices
 canvas.addEventListener("mousedown", (e) => {
     draw(e.pageX, e.pageY);
-    // canvasFull && drawText();
+    canvasFull && song.play();
     reaveling = true;
-});
-canvas.addEventListener("mousemove", (e) => {
+  });
+  canvas.addEventListener("mousemove", (e) => {
     reaveling && draw(e.pageX, e.pageY);
-    // canvasFull && drawText();
-});
-canvas.addEventListener("mouseup", (e) => {
+  });
+  canvas.addEventListener("mouseup", (e) => {
     draw(e.pageX, e.pageY);
-    // canvasFull && drawText();
     reaveling = false;
 });
 
@@ -80,7 +80,7 @@ canvas.addEventListener("mouseup", (e) => {
 canvas.addEventListener("touchstart", (e) => {
     e.preventDefault();
     draw(e.touches[0].pageX, e.touches[0].pageY);
-    // canvasFull && drawText();
+    canvasFull && song.play();
 });
 canvas.addEventListener("touchmove", (e) => {
     e.preventDefault();
