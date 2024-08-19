@@ -7,6 +7,7 @@ let reaveling = false;
 let canvasFull = false;
 let song = new Audio('./song.mp3');
 song.volume = 1;
+song.currentTime = 22;
 
 function isCanvasFull() {
   const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
